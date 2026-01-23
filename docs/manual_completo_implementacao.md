@@ -1784,8 +1784,10 @@ def main():
     # -------------------------
     # Fórmula recomendada pelo XGBoost:
     # scale_pos_weight = (# negativos) / (# positivos)
-    neg = (y_train == 0).sum()
-    pos = (y_train == 1).sum()
+    # Conversão explícita para int/float nativos do Python
+    # (JSON não serializa tipos do NumPy como int64/float32)
+    neg = int((y_train == 0).sum())
+    pos = int((y_train == 1).sum())
 
     scale_pos_weight = neg / pos
 
