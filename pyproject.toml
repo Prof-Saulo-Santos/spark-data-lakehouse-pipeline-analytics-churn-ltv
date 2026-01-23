@@ -1,0 +1,43 @@
+
+[tool.poetry]
+name = "customer-intelligence-360"
+version = "0.1.0"
+description = "Predição de Churn e LTV em escala com Spark, Delta Lake e MLOps"
+authors = ["Engenheiro de Dados <seu@email.com>"]
+readme = "README.md"
+packages = [{include = "src"}]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.13"
+# Core
+pyspark = "3.5.3"
+delta-spark = "3.2.1"
+# Local Data
+pandas = "2.1.4"
+numpy = "1.26.4"
+# Generation & Quality
+Faker = "30.8.2"
+great-expectations = "1.3.14"
+# Models
+mlflow = "2.19.0"
+scikit-learn = "1.5.2"
+xgboost = "2.1.3"
+lifetimes = "0.11.3"
+# Utils
+click = "8.1.8"
+python-dotenv = "1.0.1"
+setuptools = "^80.9.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "8.3.4"
+bump2version = "1.0.1"
+pre-commit = "4.0.1"
+black = "24.10.0"
+ruff = "0.8.3"
+
+[tool.poetry.scripts]
+ci360-datagen = "src.datagen.main:main"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

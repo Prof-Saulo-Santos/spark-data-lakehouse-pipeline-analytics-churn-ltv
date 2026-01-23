@@ -1,0 +1,22 @@
+__pycache__/
+*.py[cod]
+.venv/
+poetry.lock
+.env
+.pytest_cache/
+.coverage
+htmlcov/
+dist/
+.DS_Store
+mlruns/
+
+# Data Lake Local (Não versionar dados massivos!)
+data/bronze/*
+data/silver/*
+data/gold/*
+!data/**/.gitkeep
+
+# Spark/Metastore
+metastore_db/
+derby.log
+spark-warehouse/
