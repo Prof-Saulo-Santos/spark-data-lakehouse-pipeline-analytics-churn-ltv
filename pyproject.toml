@@ -1,7 +1,7 @@
 
 [tool.poetry]
 name = "customer-intelligence-360"
-version = "0.5.0"
+version = "0.6.0"
 description = "Predição de Churn e LTV em escala com Spark, Delta Lake e MLOps"
 authors = ["Engenheiro de Dados <seu@email.com>"]
 readme = "README.md"
