@@ -2126,19 +2126,25 @@ if __name__ == "__main__":
     git push --tags
     ```
 
-### 🎉 Conclusão!
-Foi construído um **Data Lakehouse** completo do zero, desde a ingestão até a inteligência preditiva, seguindo as melhores práticas de Engenharia de Software.
-
 ---
 
 # Capítulo 7: CI/CD & Testes Automatizados (Fase 7)
 
 Para elevar o nível de profissionalismo do projeto ("Roadmap Enterprise"), foi implementado um pipeline de **Integração Contínua (CI)**. Isso garante que nenhum código quebrado entre na branch `main`.
 
+## 7.0 Configuração Inicial
+Antes de criar os testes, precisamos preparar a estrutura de diretórios para o ambiente de testes e GitHub Actions.
+
+**Ação:** Prepare os diretórios no terminal:
+```bash
+mkdir -p tests .github/workflows
+touch tests/__init__.py
+```
+
 ## 7.1 Smoke Testing (Teste de Fumaça)
 Antes de rodar pipelines complexos, precisamos garantir que o Spark consegue iniciar e que as dependências estão corretas.
 
-**Arquivo:** `tests/test_smoke.py`
+**Ação:** Crie o arquivo `tests/test_smoke.py` com o conteúdo abaixo:
 **Objetivo:** Validar se o ambiente Spark/Delta está funcional em menos de 10 segundos.
 
 ```python
@@ -2166,7 +2172,7 @@ def test_spark_session_is_active(spark):
 ## 7.2 Teste de Integração (Lógica de Deduplicação)
 Além de verificar se o Spark liga, precisamos verificar se a **lógica de negócio** (ETL) está correta.
 
-**Arquivo:** `tests/test_silver.py`
+**Ação:** Crie o arquivo `tests/test_silver.py` com o conteúdo abaixo:
 **Objetivo:** Garantir que a deduplicação da camada Silver realmente funciona.
 
 ```python
@@ -2209,6 +2215,8 @@ def test_refine_customers_deduplication(spark, tmp_path):
 
 ## 7.3 GitHub Actions Pipeline
 Foi criado um workflow que executa automaticamente a cada `git push`.
+
+**Ação:** Crie o arquivo `ci.yaml` dentro dele:
 **Arquivo:** `.github/workflows/ci.yaml`
 
 ```yaml
@@ -2254,14 +2262,9 @@ jobs:
 
 ### 🛑 Checkpoint: Execução & Versionamento (v0.7.0)
 
-A implementação do CI/CD garante que a "fábrica" não pare. Vamos oficializar isso.
 
-1.  **Criar Diretórios e Arquivos:**
-    Certifique-se de ter criado a pasta `tests/` e o arquivo `__init__.py` vazio dentro dela.
-    ```bash
-    mkdir -p tests .github/workflows
-    touch tests/__init__.py
-    ```
+1.  **Garanta a estrutura:**
+    Verifique se as pastas `tests/` e `.github/workflows` foram criadas corretamente na etapa 7.0.
 
 2.  **Validar Tests Localmente:**
     Antes de subir, teste na sua máquina.
